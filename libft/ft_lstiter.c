@@ -1,40 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/05 13:42:19 by cfontain          #+#    #+#             */
-/*   Updated: 2022/05/09 12:28:28 by cfontain         ###   ########.fr       */
+/*   Created: 2022/05/11 14:22:26 by cfontain          #+#    #+#             */
+/*   Updated: 2022/07/07 16:26:56 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *nptr)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	int		i;
-	int		result;
-	int		value;
-
-	value = 1;
-	result = 0;
-	i = 0;
-	while ((nptr[i] == ' ') || (nptr[i] >= 9 && nptr[i] <= 13))
-		i++;
-	if (nptr[i] == '-' || nptr[i] == '+')
+	if (!f)
+		return ;
+	while (lst)
 	{
-		if (nptr[i] == '-')
-		{
-			value *= (-1);
-		}
-		i++;
+		f((void *)lst->content);
+		lst = lst->next;
 	}
-	while (nptr[i] != 0 && nptr[i] >= '0' && nptr[i] <= '9')
-	{
-		result = result * 10 + nptr[i] - '0';
-		i++;
-	}
-	return (result * value);
 }

@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_lstdellist.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/11 14:12:08 by cfontain          #+#    #+#             */
-/*   Updated: 2022/05/13 16:35:13 by cfontain         ###   ########.fr       */
+/*   Created: 2022/05/11 14:19:27 by cfontain          #+#    #+#             */
+/*   Updated: 2022/07/07 16:05:25 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
+#include "libft/libft.h"
 
-t_list	*ft_lstlast(t_list *lst)
+void	ft_lstdellist(t_list *lst)
 {
+	t_list	*p;
+
 	if (!lst)
-		return (NULL);
-	while (lst->next)
-	lst = lst->next;
-	return (lst);
+		return ;
+	while (lst)
+	{	
+		p = lst;
+		lst = lst->next;
+		free (p);
+	}	
 }

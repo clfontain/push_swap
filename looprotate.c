@@ -1,28 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   looprotate.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cfontain <cfontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/11 12:41:04 by cfontain          #+#    #+#             */
-/*   Updated: 2022/05/13 16:39:29 by cfontain         ###   ########.fr       */
+/*   Created: 2022/06/27 10:33:50 by cfontain          #+#    #+#             */
+/*   Updated: 2022/07/07 16:00:15 by cfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
+#include "libft/libft.h"
 
-int	ft_lstsize(t_list *lst)
+void	loop_rotate_a(t_list **stacka, int j)
 {
 	int		i;
 
-	if (!lst)
-		return (0);
-	i = 1;
-	while (lst->next != NULL)
+	i = 0;
+	while ((*stacka)->index != j)
 	{
-		lst = lst->next;
+		ft_rotate_a(stacka);
 		i++;
-	}
-	return (i);
+	}		
+}
+
+void	loop_reverse_rotate_a(t_list **stacka, int j)
+{
+	int		i;
+
+	i = 0;
+	while ((*stacka)->index != j)
+	{
+		ft_reverse_rotate_a(stacka);
+		i++;
+	}	
 }
